@@ -2,14 +2,12 @@ import { Client } from './Client.js';
 
 export class CurrentAccount {
   static totalAccounts = 0;
-  accountNumber;
-  agencyNumber;
-  _client;
 
   constructor(accountNumber, agencyNumber, client) {
     this.accountNumber = accountNumber;
     this.agencyNumber = agencyNumber;
     this.client = client;
+    this._balance = 0;
     CurrentAccount.totalAccounts += 1;
   }
 
@@ -23,7 +21,9 @@ export class CurrentAccount {
     return this._client;
   }
 
-  balance = 0;
+  get saldo() {
+    return this._saldo;
+  }
 
   toDeposit(depositAmount) {
     if (depositAmount <= 0) {

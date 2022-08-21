@@ -1,30 +1,37 @@
 import { Client } from './Client.js';
 import { CurrentAccount } from './CurrentAccount.js';
+import { SavingsAccount } from './SavingsAccount.js';
+import { DefaultAccount } from './DefaultAccount.js';
 
-// 1. Create new Client
+// Create new Client
 
 const client_001 = new Client('Adam', '11122233399');
 const client_002 = new Client('Sophia', '21122233399');
 
-// 2. Create new Current Account
+// Create new Current Account
 
-const account_001 = new CurrentAccount('1234-0', '100', client_001);
-const account_002 = new CurrentAccount('4567-0', '110', client_002);
+const account_001 = new DefaultAccount(0, client_001, '1001');
+const account_002 = new DefaultAccount(0, client_002, '1002');
 
-// 3. Financial Operations
+// Create new Savings Account
 
-// 3.1 Deposit Operation
+const savingsAccount_001 = new DefaultAccount(50, client_001, 100);
+
+// Financial Operations
+
+// __Deposit Operation
 account_001.toDeposit(500);
 
-// 3.2 Transfer Operation
+// __Transfer Operation
 account_001.toTransfer(200, account_002);
 
-// 3.3 Withdrawal Operations
+// __Withdrawal Operations
 account_002.toWithdraw(100);
 
-// 4. Registered Account Accountant
+// Registered Account Accountant
 
 let accountNumber = 0;
 
-// 5. Show in Console
-console.log(CurrentAccount.totalAccounts);
+// Show in Console
+console.log(account_001);
+console.log(savingsAccount_001);
